@@ -8,20 +8,25 @@ def calc(x):
   return result
 
 browser = webdriver.Chrome()
-browser.get('https://suninjuly.github.io/math.html')
 
-text_element = browser.find_element(by = "id", value = 'input_value')
-x = text_element.text
-y = calc(x)
+try:
+  browser.get('https://suninjuly.github.io/math.html')
 
-input1 = browser.find_element(by = "tag name", value = "input")
-input1.send_keys(str(y))
-checkbox = browser.find_element(by = "id", value="robotCheckbox")
-checkbox.click()
-radio = browser.find_element(by = "id", value="robotsRule")
-radio.click()
+  text_element = browser.find_element(by = "id", value = 'input_value')
+  x = text_element.text
+  y = calc(x)
 
-button = browser.find_element(by = "class name", value = "btn.btn-default")
-button.click()
+  input1 = browser.find_element(by = "tag name", value = "input")
+  input1.send_keys(str(y))
+  checkbox = browser.find_element(by = "id", value="robotCheckbox")
+  checkbox.click()
+  radio = browser.find_element(by = "id", value="robotsRule")
+  radio.click()
 
-time.sleep(10)
+  button = browser.find_element(by = "class name", value = "btn.btn-default")
+  button.click()
+
+  time.sleep(10)
+
+finally:
+  browser.quit()
