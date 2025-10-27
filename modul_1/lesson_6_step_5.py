@@ -13,7 +13,6 @@ try:
     url.click()
     time.sleep(2)
 
-
     input1 = browser.find_element(by = 'tag name', value = 'input')
     input1.send_keys('Aleksandr')
     input2 = browser.find_element(by = 'name', value = 'last_name')

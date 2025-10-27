@@ -1,23 +1,26 @@
-import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import time
 
 browser = webdriver.Chrome()
 
-try:
-    browser.get('http://suninjuly.github.io/simple_form_find_task.html')
+lst_field = [
+        ["first_name", By.NAME, "Alex"],
+        ["last_name", By.NAME, "Karasev"],
+        ["form-control.city", By.CLASS_NAME, "Moscow"],
+        ["country", By.ID, "Russia"]
+]
 
-    input1 = browser.find_element(by='tag name', value="input")
-    input1.send_keys("Ivan")
-    input2 = browser.find_element(by='name', value="last_name")
-    input2.send_keys("Petrov")
-    input3 = browser.find_element(by='class name',value="form-control.city")
-    input3.send_keys("Smolensk")
-    input4 = browser.find_element(by='id', value="country")
-    input4.send_keys("Russia")
-    button = browser.find_element(By.CSS_SELECTOR, value="button.btn")
-    button.click()
-    time.sleep(5)
+try:
+    browser.get("http://suninjuly.github.io/simple_form_find_task.html")
+
+    for locator_name, locator_method, field_value in lst_field:
+        elements = browser.find_element(locator_method, locator_name)
+        elements.send_keys(field_value)
+
+    button_1 = browser.find_element(By.ID, "submit_button")
+    button_1.click()
 
 finally:
+    time.sleep(30)
     browser.quit()

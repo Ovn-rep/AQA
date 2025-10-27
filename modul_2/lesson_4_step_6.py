@@ -6,8 +6,10 @@ from selenium.webdriver.support import expected_conditions as EC
 import math
 import time
 
+
 def calc(x):
     return(math.log(abs(12*math.sin(x))))
+
 
 browser = webdriver.Chrome()
 
