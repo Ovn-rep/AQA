@@ -4,13 +4,6 @@ from selenium.webdriver.common.by import By
 
 link = "http://selenium1py.pythonanywhere.com/"
 
-@pytest.fixture()
-def browser():
-    browser = webdriver.Chrome()
-    yield browser
-    browser.quit()
-
-
 class Test():
 
     @pytest.mark.smoke
